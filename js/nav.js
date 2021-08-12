@@ -22,8 +22,8 @@ wrappers.forEach((el) => {
 // changeRandomCards(myList.children)
 
 function changeRandomCards(wrapper) {
-	var cards = ["babyDriver.webp", "desencanto.jpg", "disjointed.jpg", "finalSpace.jpg", "mundoMisterio.jpg"]
-    var vertical = ["lupin.webp", "strangerThings.webp"]
+	var cards = ["blacklist.webp", "dark.jpg", "strangerThings.jpg", "babyDriver.webp", "desencanto.jpg", "disjointed.jpg", "finalSpace.jpg", "mundoMisterio.jpg"]
+    var vertical = ["elCamino.webp", "htsdof.webp", "lupin.webp", "strangerThings.webp"]
     var min = 0
     var maxC = cards.length
     var maxV = vertical.length
