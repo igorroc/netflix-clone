@@ -1,18 +1,332 @@
-*{
-    margin: 0;
-    padding: 0;
+@import url("./font.css");
+
+html{
+    scroll-behavior: smooth;
 }
 
-body{
-    background-color: #141414;
-    color: white;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-a{
-    text-decoration: none;
-    color: white;
+body {
+	background-color: #141414;
+
+	color: white;
+
+	font-family: "Netflix Sans Regular";
+	font-weight: normal;
+	font-size: 14px;
 }
 
-ul{
-    list-style: none;
+a {
+	text-decoration: none;
+	color: white;
+}
+
+ul {
+	list-style: none;
+}
+
+#wrapperHeader {
+	width: 100%;
+	transition: all 500ms ease;
+	z-index: 10;
+}
+
+header {
+    font-size: 1.1em;
+    letter-spacing: .05em;
+	height: 68px;
+
+	margin: 0 60px;
+
+	display: flex;
+	align-items: center;
+}
+
+header #logo {
+	width: 100px;
+	margin-right: 25px;
+}
+
+header #primaryHeader {
+	display: flex;
+}
+
+header #primaryHeader > li {
+	margin-left: 20px;
+}
+
+header #primaryHeader > li > a:hover {
+	color: #b3b3b3;
+}
+
+#mobileBrowse {
+	display: none;
+}
+
+header #secondaryHeader {
+	display: flex;
+	margin-left: auto;
+	font-size: 1.5em;
+}
+
+header #secondaryHeader > div {
+	margin-right: 20px;
+	cursor: pointer;
+	transition: color 100ms ease;
+}
+
+header #secondaryHeader > div:hover {
+	color: #b3b3b3;
+}
+
+.active {
+	font-weight: bold;
+    pointer-events: none;
+}
+
+main {
+	margin: 0 60px;
+	margin-top: 10vw;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+main img {
+	width: 36%;
+}
+
+main p {
+	width: 36%;
+}
+
+main #ctaMain {
+	display: flex;
+	gap: 20px;
+}
+
+main #ctaMain > button {
+	padding: 10px 24px;
+
+	font-family: "Netflix Sans Regular";
+	font-size: 1.2em;
+	font-weight: bold;
+
+	display: flex;
+	gap: 10px;
+	align-items: center;
+
+	border: none;
+	border-radius: 4px;
+
+	cursor: pointer;
+}
+
+#playBtn {
+	color: black;
+	background-color: white;
+}
+
+#playBtn:hover {
+	background-color: #ffffffbf;
+}
+
+#moreBtn {
+	background-color: rgba(109, 109, 110, 0.7);
+	color: white;
+}
+
+#moreBtn:hover {
+	background-color: rgba(109, 109, 110, 0.4);
+}
+
+#heroBackground {
+	position: absolute;
+	top: 0;
+
+	background-image: url(../assets/hero_disjointed.webp);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+
+	width: 100%;
+	height: 60vh;
+
+	z-index: -2;
+}
+
+#heroBackground::after {
+	content: "";
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0.75) 0%,
+		rgba(0, 0, 0, 0.6) 25%,
+		rgba(0, 0, 0, 0.6) 69%,
+		rgba(20, 20, 20, 1) 100%
+	);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.cards {
+	position: relative;
+	width: 100%;
+	height: 165px;
+
+	margin: 50px 0;
+
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.verticalCards {
+	height: 500px;
+}
+
+.verticalCards .card:hover {
+	transform: scale(1.2);
+}
+
+.cards > h3 {
+	margin-left: 60px;
+}
+
+.wrapperCards {
+	height: 100%;
+	display: flex;
+	padding: 0 60px;
+	gap: 10px;
+
+	overflow-x: auto;
+	overflow-y: hidden;
+
+    scroll-behavior: smooth;
+}
+
+.wrapperCards:hover .leftNav{
+    display: flex;
+}
+
+.wrapperCards:hover .rightNav{
+    display: flex;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.wrapperCards::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.wrapperCards {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+.card {
+	position: relative;
+
+	width: 256px;
+	height: 100%;
+
+	background-color: #1a1a1a;
+	border-radius: 5px;
+
+	transition: all 300ms ease;
+	transition-delay: 300ms;
+}
+
+.card:hover {
+	transform: scale(1.6);
+}
+
+.wrapperCards img {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 5px;
+	width: 100%;
+}
+
+.loadingTitle {
+	background-color: #1a1a1a;
+	width: 8em;
+	height: 2.2em;
+}
+
+.loadingCards .card {
+	width: 256px;
+	animation: pulsateAnimation 3.2s infinite ease-in-out;
+}
+
+.loadingCards .card:hover {
+	transform: scale(1);
+}
+
+.leftNav,
+.rightNav {
+	position: absolute;
+	z-index: 3;
+
+	width: 50px;
+	height: 134px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 3em;
+
+	filter: drop-shadow(0 0 5px #000);
+
+    cursor: pointer;
+
+    display: none;
+}
+
+.leftNav {
+    left: 10px;
+}
+
+.rightNav {
+    right: 10px;
+}
+
+.leftNav:hover {
+    background-color: #0007;
+	-webkit-box-shadow: 0px 0px 15px 15px #0007;
+	box-shadow: 0px 0px 15px 15px #0007;
+}
+
+.rightNav:hover {
+	background-color: #0007;
+	-webkit-box-shadow: 0px 0px 5px 5px #0007;
+	box-shadow: 0px 0px 5px 5px #0007;
+}
+
+.verticalCards .leftNav,
+.verticalCards .rightNav{
+    height: 470px;
+}
+footer {
+	height: 500px;
+}
+
+@keyframes pulsateAnimation {
+	0% {
+		background-color: #1a1a1a;
+	}
+	25% {
+		background-color: #333;
+	}
+	50% {
+		background-color: #1a1a1a;
+	}
+	100% {
+		background-color: #1a1a1a;
+	}
 }
